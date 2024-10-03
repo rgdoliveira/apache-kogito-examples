@@ -16,34 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.acme.travels.usertasks;
+package org.kie.kogito.examples;
 
-import java.util.Arrays;
-import java.util.List;
+public class Account {
 
-import org.jbpm.process.instance.impl.workitem.Complete;
-import org.kie.kogito.process.workitem.LifeCyclePhase;
+    private String email;
+    private String userId;
 
-/**
- * Extension to Complete life cycle phase that applies to any human task.
- * It will set the status to "Completed"
- * 
- * This phase will only allow to complete tasks that are in started phase.
- *
- * It can transition from
- * <ul>
- * <li>Start</li>
- * </ul>
- * 
- * This is a terminating (final) phase.
- */
-public class CompleteStartedOnly extends Complete {
-
-    private List<String> allowedTransitions = Arrays.asList(Start.ID);
-
-    @Override
-    public boolean canTransition(LifeCyclePhase phase) {
-        return allowedTransitions.contains(phase.id());
+    public Account() {
     }
 
+    public Account(String email, String userId) {
+        this.email = email;
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
 }
